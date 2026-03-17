@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KBA Danışmanlık Paneli</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        :root { --kba-gold: #c5a059; --kba-dark: #2c3e50; }
+        body { font-family: 'Georgia', serif; background-color: #f0f2f5; padding: 10px; margin: 0; }
+        .container { max-width: 600px; margin: 20px auto; background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 5px solid var(--kba-gold); }
+        
+        /* Logo ve Başlık */
+        .header { text-align: center; margin-bottom: 25px; }
+        .logo { font-size: 40px; font-weight: bold; color: var(--kba-gold); border: 3px solid var(--kba-gold); display: inline-block; padding: 5px 15px; border-radius: 50%; margin-bottom: 10px; }
+        .motto { font-size: 12px; letter-spacing: 2px; color: #7f8c8d; text-transform: uppercase; }
+
+        .input-group { margin-bottom: 15px; }
+        label { display: block; font-size: 14px; font-weight: bold; margin-bottom: 5px; color: var(--kba-dark); }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 14px; }
+        
+        .btn-generate { background: var(--kba-dark); color: white; padding: 15px; width: 100%; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 10px; font-weight: bold; }
+        .btn-download { background: var(--kba-gold); color: white; padding: 12px; width: 100%; border: none; border-radius: 8px; font-size: 14px; cursor: pointer; margin-top: 15px; display: none; font-weight: bold; }
+        
+        /* Rapor Alanı */
+        #report-area { margin-top: 30px; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px; background: #fff; display: none; position: relative; }
+        .report-title { text-align: center; color: var(--kba-gold); border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 15px; font-size: 20px; }
+        .footer-note { font-size: 10px; text-align: center; color: #999; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px; }
+
+        /* WhatsApp Hattı */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; padding: 15px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 4px 10px rgba(0,0,0,0.2); font-size: 14px; display: flex; align-items: center; gap: 8px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="logo">KB</div>
+        <div class="motto">Kendi Bilinciyle Analiz</div>
+        <h2 style="margin: 10px 0;">Sistemik Danışmanlık Paneli</h2>
+    </div>
+
+    <div class="input-group">
+        <label>Sorgu Yapan (Örn: Şaban):</label>
+        <input type="text" id="sorguSahibi" placeholder="İsim giriniz">
+    </div>
+
+    <div style="display: flex; gap: 10px;">
+        <div class="input-group" style="flex: 1;">
+            <label>Kişi 1 (Kod):</label>
+            <input type="number" id="code1" value="3">
+        </div>
+        <div class="input-group" style="flex: 1;">
+            <label>Kişi 2 (Kod):</label>
+            <input type="number" id="code2" value="3">
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Zaman (Soyut Etki):</label>
+        <select id="zaman">
+            <option value="Mars (Ya Melik - Ya Kuddüs)">Mars (Ya Melik - Ya Kuddüs)</option>
+            <option value="Merkür (Hırslı Zihin)">Merkür (Hırslı Zihin)</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>Vakit (Günün İtidali):</label>
+        <select id="vakit">
+            <option value="Venüs (Cuma)">Venüs (Cuma)</option>
+            <option value="Jüpiter (Perşembe)">Jüpiter (Perşembe)</option>
+        </select>
+    </div>
+
+    <div class="input-group">
+        <label>Tercih Edilen İtidal Hali:</label>
+        <select id="itidal">
+            <option valu
