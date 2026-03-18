@@ -3,24 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KBA Sistemik Analiz V5</title>
+    <title>KBA Karar Mekanizması</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root { --kba-gold: #c5a059; --kba-dark: #1a252f; }
         body { font-family: 'Segoe UI', sans-serif; background: #f4f7f6; padding: 10px; margin: 0; }
-        .panel { max-width: 500px; margin: 20px auto; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 6px solid var(--kba-gold); }
-        .header { background: var(--kba-dark); color: white; padding: 20px; text-align: center; border-radius: 14px 14px 0 0; }
+        .panel { max-width: 450px; margin: 30px auto; background: white; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); border-top: 6px solid var(--kba-gold); overflow: hidden; }
+        .header { background: var(--kba-dark); color: white; padding: 20px; text-align: center; }
         .logo { font-size: 40px; font-weight: bold; color: var(--kba-gold); border: 2px solid var(--kba-gold); display: inline-block; width: 60px; height: 60px; line-height: 60px; border-radius: 50%; }
-        .content { padding: 20px; }
+        .content { padding: 25px; }
         .step { display: none; }
         .step.active { display: block; }
         label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 13px; color: #2c3e50; }
-        input, select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-        .btn { width: 100%; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        input, select { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; font-size: 14px; }
+        .btn { width: 100%; padding: 15px; border: none; border-radius: 10px; font-weight: bold; cursor: pointer; transition: 0.3s; font-size: 15px; }
         .btn-gold { background: var(--kba-gold); color: white; }
-        .info-box { background: #eef2f7; padding: 15px; border-radius: 10px; font-size: 14px; margin-bottom: 15px; border-left: 4px solid var(--kba-gold); white-space: pre-line; }
-        #report-result { background: #fffdf5; padding: 20px; border: 1px solid #f1e6b2; border-radius: 10px; line-height: 1.6; }
-        .copyright { text-align: center; font-size: 10px; color: #999; margin-top: 15px; }
+        .info-box { background: #f9f9f9; padding: 15px; border-radius: 10px; font-size: 14px; margin-bottom: 15px; border-left: 4px solid var(--kba-gold); color: #34495e; }
+        #report-result { background: #fffdf5; padding: 20px; border: 1px solid #f1e6b2; border-radius: 10px; line-height: 1.6; color: #333; font-size: 15px; }
+        .wa-btn { background: #25d366; color: white; text-decoration: none; display: block; text-align: center; padding: 12px; border-radius: 10px; margin-top: 15px; font-weight: bold; }
+        .copyright { text-align: center; font-size: 10px; color: #999; margin-top: 15px; padding-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -28,22 +29,11 @@
 <div class="panel">
     <div class="header">
         <div class="logo">KB</div>
-        <div style="margin-top:5px; letter-spacing: 2px; font-size: 11px; font-weight: bold;">KENDİ BİLİNCİYLE ANALİZ V5</div>
+        <div style="margin-top:5px; letter-spacing: 2px; font-size: 11px;">SİSTEMİK ANALİZ</div>
     </div>
 
     <div class="content">
         <div id="step1" class="step active">
-            <div class="info-box" id="vakit-display">Vakit Yükleniyor...</div>
-            <label>Zaman (Şu Anki Gezegen Saati):</label>
-            <select id="zamanGezegen">
-                <option value="Mars">Mars (Ya Melik - Ya Kuddüs)</option>
-                <option value="Venus">Venüs (Ya Latif - Ya Vedud)</option>
-                <option value="Jupiter">Jüpiter (Ya Alim - Ya Hakim)</option>
-                <option value="Merkur">Merkür (Ya Habir - Ya Melik)</option>
-                <option value="Gunes">Güneş (Ya Hayy - Ya Kayyum)</option>
-                <option value="Ay">Ay (Ya Rahman - Ya Rahim)</option>
-                <option value="Saturn">Satürn (Ya Fettah - Ya Rezzak)</option>
-            </select>
             <label>1. Kişi (Sorgu Sahibi) ve Kod:</label>
             <div style="display: flex; gap: 10px;">
                 <input type="text" id="n1" placeholder="İsim">
@@ -54,12 +44,23 @@
                 <input type="text" id="n2" placeholder="İsim">
                 <input type="number" id="c2" placeholder="Kod">
             </div>
-            <button class="btn btn-gold" onclick="analizEt()">ZAMAN ANALİZİNİ BAŞLAT</button>
+            <button class="btn btn-gold" onclick="analizEt()">ANALİZİ BAŞLAT</button>
         </div>
 
         <div id="step2" class="step">
-            <div class="info-box" id="analiz-detay"></div>
-            <label>Yaşanan Sorun (Tespit Edilen Hal):</label>
+            <div class="info-box">Sistem verileri işledi. Lütfen yaşanan temel sorunu seçiniz:</div>
+            <label>Yaşanan Durum:</label>
             <select id="yanlis-hal"></select>
-            <button class="btn btn-gold" onclick="itidalGoster()">ŞİFA KAPISINA GİT</button>
+            <button class="btn btn-gold" onclick="itidalGoster()">ÇÖZÜMÜ GÖR</button>
         </div>
+
+        <div id="step3" class="step">
+            <div class="info-box">Bu sorunu aşmak için hangi erdemi seçelim?</div>
+            <label>Şifa Kapısı:</label>
+            <select id="itidal-hal"></select>
+            <button class="btn btn-gold" onclick="raporOlustur()">RAPORU TAMAMLA</button>
+        </div>
+
+        <div id="step4" class="step">
+            <div id="capture">
+                <div id="report-result"></div>
