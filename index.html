@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KBA Karar Mekanizması V4</title>
+    <title>KBA Sistemik Analiz V5</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
         :root { --kba-gold: #c5a059; --kba-dark: #1a252f; }
@@ -28,41 +28,38 @@
 <div class="panel">
     <div class="header">
         <div class="logo">KB</div>
-        <div style="margin-top:5px; letter-spacing: 2px; font-size: 12px;">SİSTEMİK ANALİZ V4</div>
+        <div style="margin-top:5px; letter-spacing: 2px; font-size: 11px; font-weight: bold;">KENDİ BİLİNCİYLE ANALİZ V5</div>
     </div>
 
     <div class="content">
         <div id="step1" class="step active">
             <div class="info-box" id="vakit-display">Vakit Yükleniyor...</div>
-            <label>Zaman (Şu Anki Gezegen Etkisi):</label>
+            <label>Zaman (Şu Anki Gezegen Saati):</label>
             <select id="zamanGezegen">
                 <option value="Mars">Mars (Ya Melik - Ya Kuddüs)</option>
-                <option value="Venüs">Venüs (Ya Latif - Ya Vedud)</option>
-                <option value="Jüpiter">Jüpiter (Ya Alim - Ya Hakim)</option>
-                <option value="Merkür">Merkür (Ya Habir - Ya Melik)</option>
+                <option value="Venus">Venüs (Ya Latif - Ya Vedud)</option>
+                <option value="Jupiter">Jüpiter (Ya Alim - Ya Hakim)</option>
+                <option value="Merkur">Merkür (Ya Habir - Ya Melik)</option>
+                <option value="Gunes">Güneş (Ya Hayy - Ya Kayyum)</option>
+                <option value="Ay">Ay (Ya Rahman - Ya Rahim)</option>
+                <option value="Saturn">Satürn (Ya Fettah - Ya Rezzak)</option>
             </select>
             <label>1. Kişi (Sorgu Sahibi) ve Kod:</label>
             <div style="display: flex; gap: 10px;">
-                <input type="text" id="n1" placeholder="İsim" style="flex:2;">
-                <input type="number" id="c1" placeholder="Kod" style="flex:1;">
+                <input type="text" id="n1" placeholder="İsim">
+                <input type="number" id="c1" placeholder="Kod">
             </div>
             <label>2. Kişi ve Kod:</label>
             <div style="display: flex; gap: 10px;">
-                <input type="text" id="n2" placeholder="İsim" style="flex:2;">
-                <input type="number" id="c2" placeholder="Kod" style="flex:1;">
+                <input type="text" id="n2" placeholder="İsim">
+                <input type="number" id="c2" placeholder="Kod">
             </div>
             <button class="btn btn-gold" onclick="analizEt()">ZAMAN ANALİZİNİ BAŞLAT</button>
         </div>
 
         <div id="step2" class="step">
             <div class="info-box" id="analiz-detay"></div>
-            <label>Yaşanan Sorun (Saha Sapması):</label>
+            <label>Yaşanan Sorun (Tespit Edilen Hal):</label>
             <select id="yanlis-hal"></select>
             <button class="btn btn-gold" onclick="itidalGoster()">ŞİFA KAPISINA GİT</button>
-        </div>
-
-        <div id="step3" class="step">
-            <label id="vakit-itidal-label"></label>
-            <select id="itidal-hal"></select>
-            <button class="btn btn-gold" onclick="raporOlustur()">RAPORU MÜHÜRLE</button>
         </div>
